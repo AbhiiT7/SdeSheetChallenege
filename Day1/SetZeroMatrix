@@ -1,0 +1,86 @@
+public class Zero_matrix {
+    static void solution(int matrix[][]){
+        int m =matrix.length;
+        int n = matrix[0].length;
+
+        int x =1;
+        int y =1;
+        //x for columns
+        //y for rows
+        
+        for(int j=0;j<n;j++)
+        {
+            if(matrix[0][j]==0)x=0;
+        //if we find o in first row then x is 0    
+        }
+        
+        
+        for(int i=0;i<m;i++)
+        {
+            if(matrix[i][0]==0)y=0;
+        }
+       
+            
+        for(int i=1;i<m;i++)
+        {
+            for(int j=1;j<n;j++) // we are runnig loop for 3 x 3 matrix.
+            {
+                if(matrix[i][j]==0)
+                {
+                    matrix[i][0]=0; //whole row will be zero
+                    matrix[0][j]=0; //whole column will be zero
+                }
+            }
+        }
+        
+        
+         for(int j=1;j<n;j++)
+        {
+        //this loop runs for making matrix column zero
+           if(matrix[0][j]==0)
+           {
+               for(int i=1;i<m;i++)
+                   matrix[i][j]=0;
+           }
+        }
+        
+        for(int i=1;i<m;i++)
+        {
+            //this loop runs for making matrix row zero
+            if(matrix[i][0]==0)
+            {
+                for(int j=0;j<n;j++)
+                    matrix[i][j]=0;
+            }
+        }
+        
+        if(y==0)
+        {
+            //this loop runs for making first row zero
+            for(int i=0;i<m;i++)
+            {
+                matrix[i][0]=0;
+            }
+        }
+        
+         if(x==0)
+        {      
+            //this loop runs for making first column zero
+             for(int j=0;j<n;j++)
+            matrix[0][j]=0;
+        
+        }
+    }
+    public static void main(String[] args) {
+        int matrix[][]={{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
+        solution(matrix);
+        System.out.println("The Final Matrix is ");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+}
