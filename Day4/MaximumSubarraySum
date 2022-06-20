@@ -1,0 +1,60 @@
+public class MaximumSubarray {
+    static void selection(int arr[]) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int smallest = i;
+            for (int j = i + 1; j < arr.length - 1; j++) {
+                if (arr[smallest] > arr[j]) {
+                    smallest = j;
+                }
+            }
+            int temp = arr[smallest];
+            arr[smallest] = arr[i];
+            arr[i] = temp;
+        }
+
+    }
+
+    static void printarray(int arr[]) {
+        System.out.print("  " + "The sorted array is : ");
+        for (int i = 0; i <= arr.length - 1; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static int solution(int arr[]) {
+        int sum = 0;
+        if (arr.length == 1) {
+            return arr[0];
+        }
+        for (int i = arr.length - 1; i > ((arr.length - 1) / 2); i--) {
+
+            sum += arr[i];
+        }
+        System.out.printf(" %d", sum);
+        return sum;
+    }
+
+    public static int striver(int arr[]) {
+        int sum = 0;
+        int max = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            if (sum > max)
+                max = sum;
+            if (sum < 0)
+                sum = 0;
+
+        }
+        System.out.println(max);
+        return max;
+    }
+
+    public static void main(String[] args) {
+        int arr[] = { -2, 1, -3, 4, -1, 2, 10, -5, 40 };
+        // selection(arr);
+        // printarray(arr);
+        // System.out.println();
+        // solution(arr);
+        striver(arr);
+    }
+}
